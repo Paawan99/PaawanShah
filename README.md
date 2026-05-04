@@ -1,70 +1,41 @@
-# Paawan Shah — Portfolio Website
+# Canadian Credit Card Finder
 
-A dark, modern personal portfolio built with HTML, CSS & JavaScript. Designed to be hosted free on **GitHub Pages** with a custom domain.
+A free, interactive single-page tool that recommends the best Canadian credit card based on a user's spending habits, goals, and credit profile.
 
-## 🚀 How to Deploy on GitHub Pages (Free!)
+Live preview (after Pages is enabled): `https://paawan99.github.io/PaawanShah/`
 
-### Step 1: Create a GitHub Repository
-1. Go to [github.com](https://github.com) and sign in (or create an account)
-2. Click the **+** icon → **New repository**
-3. Name it: `paawanshah99.github.io` (replace `paawanshah99` with your GitHub username)
-4. Set it to **Public**
-5. Click **Create repository**
+## What it does
 
-### Step 2: Upload Your Files
-1. On the repository page, click **"uploading an existing file"**
-2. Drag and drop ALL files from this folder: `index.html`, `CNAME`
-3. Click **"Commit changes"**
+1. **5-step wizard** — collects: main goal, monthly spend, top spending categories, annual-fee tolerance, credit score range.
+2. **Scores 60+ Canadian cards** — covers TD, RBC, BMO, Scotiabank, CIBC, National Bank, American Express, Tangerine, Simplii, Brim, PC Financial, Rogers, Neo, MBNA, Triangle, Home Trust, Desjardins, Meridian and Vancity.
+3. **Returns a top 5** — with reasons, welcome bonuses, pros, and a head-to-head comparison table for the top 3.
 
-### Step 3: Enable GitHub Pages
-1. Go to your repo → **Settings** → **Pages**
-2. Under **Source**, select **Deploy from a branch**
-3. Select **main** branch and **/ (root)** folder
-4. Click **Save**
+Scoring weights: goal alignment (40), category match (25), annual-fee fit (15), credit-score eligibility (15), spend fit (5).
 
-### Step 4: Connect Your Custom Domain
-1. In GitHub Pages settings, under **Custom domain**, enter: `Paawanshah99.com`
-2. Click **Save**
-3. Go to your domain registrar (where you bought Paawanshah99.com)
-4. Update DNS settings:
+## File structure
 
-   **Option A — A Records (Recommended):**
-   | Type | Name | Value |
-   |------|------|-------|
-   | A | @ | 185.199.108.153 |
-   | A | @ | 185.199.109.153 |
-   | A | @ | 185.199.110.153 |
-   | A | @ | 185.199.111.153 |
-   | CNAME | www | paawanshah99.github.io |
-
-   **Option B — CNAME Only (if A records not supported):**
-   | Type | Name | Value |
-   |------|------|-------|
-   | CNAME | www | paawanshah99.github.io |
-
-5. Wait 24-48 hours for DNS propagation
-6. Back in GitHub Pages settings, check **"Enforce HTTPS"** once it becomes available
-
-### ✅ Done!
-Your site will be live at **https://Paawanshah99.com**
-
-## 📁 File Structure
 ```
-├── index.html    # Complete portfolio website
-├── CNAME         # Custom domain config for GitHub Pages
-└── README.md     # This file
+index.html    # Self-contained: HTML + CSS + card database + scoring engine
+favicon.svg   # Site favicon
+README.md     # This file
 ```
 
-## ✏️ Customization
-- Edit `index.html` to update your bio, projects, skills, and contact info
-- Colors can be changed via CSS variables at the top of the `<style>` block
-- Add your real project links in the Projects section
+Everything is in one file so it can be hosted on GitHub Pages without a build step.
 
-## 📧 Contact Form
-The contact form currently shows a success animation. To make it functional, you can integrate:
-- [Formspree](https://formspree.io) (free tier available)
-- [Getform](https://getform.io)
-- [EmailJS](https://www.emailjs.com)
+## Deploying
 
----
-Built with ❤️ by Paawan Shah
+### GitHub Pages (project site)
+1. Repo **Settings** -> **Pages**
+2. Source: **Deploy from a branch** -> `main` -> `/ (root)`
+3. Save — site goes live at `https://paawan99.github.io/PaawanShah/`
+
+### Custom subdomain (recommended)
+The apex domain `paawanshah99.com` is already used by the portfolio repo. To put this site on its own subdomain:
+
+1. Create a `CNAME` file in the repo root containing e.g. `cards.paawanshah99.com`
+2. At your DNS registrar add a record: `CNAME  cards  paawan99.github.io.`
+3. In **Settings** -> **Pages**, set the custom domain to `cards.paawanshah99.com` and enable **Enforce HTTPS** once it becomes available.
+
+## Disclaimer
+
+Recommendations are based on publicly available card information and a heuristic scoring model. Card terms change frequently — always verify the current offer with the issuer before applying. This tool is not financial advice.
