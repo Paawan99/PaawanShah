@@ -33,7 +33,6 @@ PLANET_IDS: dict[str, int] = {
     "Pluto": swe.PLUTO,
     "Mean Node": swe.MEAN_NODE,
     "True Node": swe.TRUE_NODE,
-    "Chiron": swe.CHIRON,
 }
 
 OUTER_PLANETS: list[str] = ["Jupiter", "Saturn", "Uranus", "Neptune", "Pluto"]
@@ -71,10 +70,13 @@ class EphemerisFlags:
 def configure_zodiac(config: ChartConfig) -> EphemerisFlags:
     """Toggle Swiss Ephemeris between tropical and sidereal mode.
 
-    Returns the calculation flag to pass to `swe.calc_ut`. Includes SPEED so
-    we can detect retrograde motion in the same call.
+    Uses the Moshier ephemeris (FLG_MOSEPH) — built into pyswisseph, no
+    external `.se1` files required, accuracy a few arcseconds. Drop in
+    `seas_18.se1`/`semo_18.se1`/`sepl_18.se1` and switch to FLG_SWIEPH
+    if you need full Swiss Ephemeris precision (and asteroid bodies like
+    Chiron).
     """
-    base = swe.FLG_SWIEPH | swe.FLG_SPEED
+    base = swe.FLG_MOSEPH | swe.FLG_SPEED
     if config.zodiac == "sidereal":
         swe.set_sid_mode(AYANAMSA_CODES[config.ayanamsa], 0, 0)
         return EphemerisFlags(flag=base | swe.FLG_SIDEREAL, zodiac="sidereal")

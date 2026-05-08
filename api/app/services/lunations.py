@@ -122,7 +122,7 @@ def _find_eclipses(
     cursor = start_jd
     while cursor < end_jd:
         try:
-            ret, tret, _attr = swe.sol_eclipse_when_glob(cursor, swe.FLG_SWIEPH, 0)
+            ret, tret, _attr = swe.sol_eclipse_when_glob(cursor, swe.FLG_MOSEPH, 0)
         except Exception:
             break
         max_jd = tret[0]
@@ -137,7 +137,7 @@ def _find_eclipses(
         eclipse_type = _solar_type(ret)
         try:
             geo = (location.longitude, location.latitude, location.elevation)
-            visible_ret, _ = swe.sol_eclipse_how(max_jd, geo, swe.FLG_SWIEPH)
+            visible_ret, _ = swe.sol_eclipse_how(max_jd, geo, swe.FLG_MOSEPH)
             visible = visible_ret > 0
         except Exception:
             visible = False
@@ -158,7 +158,7 @@ def _find_eclipses(
     cursor = start_jd
     while cursor < end_jd:
         try:
-            ret, tret, _attr = swe.lun_eclipse_when(cursor, swe.FLG_SWIEPH, 0)
+            ret, tret, _attr = swe.lun_eclipse_when(cursor, swe.FLG_MOSEPH, 0)
         except Exception:
             break
         max_jd = tret[0]
