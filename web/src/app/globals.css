@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html, body {
+  background: #0b0b1f;
+  color: #f5f0e1;
+}
+
+body {
+  font-family: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  background-image: radial-gradient(ellipse at top, rgba(224,200,120,0.10), transparent 55%),
+                    radial-gradient(ellipse at bottom right, rgba(120,90,200,0.12), transparent 70%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+h1, h2, h3 {
+  font-family: "Cinzel", ui-serif, Georgia, serif;
+  letter-spacing: 0.02em;
+}
+
+.btn {
+  @apply inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors;
+}
+
+.btn-primary {
+  @apply btn bg-cosmic-accent text-cosmic-deep hover:bg-amber-300;
+}
+
+.btn-ghost {
+  @apply btn bg-transparent text-cosmic-ink border border-cosmic-muted/30 hover:bg-cosmic-mid;
+}
+
+.card {
+  @apply rounded-xl border border-cosmic-muted/20 bg-cosmic-mid/40 backdrop-blur p-5 shadow-lg;
+}
+
+.input {
+  @apply w-full rounded-md border border-cosmic-muted/30 bg-cosmic-deep/60 px-3 py-2 text-sm outline-none focus:border-cosmic-accent;
+}
+
+.label {
+  @apply block text-xs uppercase tracking-wider text-cosmic-muted mb-1;
+}
+
+.prose-cosmic {
+  @apply prose prose-invert max-w-none;
+}
+
+.prose-cosmic h2 { @apply text-cosmic-accent; }
+.prose-cosmic a { @apply text-cosmic-accent; }

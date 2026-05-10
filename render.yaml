@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: stardust-api
+    env: docker
+    plan: free
+    region: oregon
+    healthCheckPath: /api/v1/healthz
+    dockerfilePath: ./api/Dockerfile
+    dockerContext: ./api
+    autoDeploy: true
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_MODEL
+        value: gpt-4o-mini
+      - key: OPENAI_CHAT_MODEL
+        value: gpt-4o-mini
+      - key: CORS_ORIGINS
+        value: https://paawanshah.vercel.app,https://paawan99.github.io
+      - key: EPHE_PATH
+        value: /app/ephe
+      - key: RATE_LIMIT_PER_MINUTE
+        value: "30"
+      - key: ENVIRONMENT
+        value: production
